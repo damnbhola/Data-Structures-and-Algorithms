@@ -4,7 +4,7 @@ class Node:
         self.next = self
 
 
-class c_sll:
+class CSll:
     root = None
 
     def __len__(self):
@@ -31,7 +31,7 @@ class c_sll:
             return
         start = self.root
         count = 1
-        while start.next is not self.root and count != pos:
+        while start.next is not self.root and count < pos:
             count += 1
             start = start.next
         if pos == 0:
