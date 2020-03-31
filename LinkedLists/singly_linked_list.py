@@ -4,7 +4,7 @@ class Node:
         self.next = None
 
 
-class sll:
+class Sll:
     root = None
 
     def __len__(self):
@@ -48,18 +48,18 @@ class sll:
     def pop(self, pos=None):
         if self.root is not None:
             start = self.root
-            if pos == 0 or (start.next is None and pos is None):
-                temp = self.root
-                self.root = None
-                return temp.value
+            if pos == 0 or start.next is None:
+                self.root = start.next
+                return start.value
             count = 1
-            while start.next is not None:
-                temp = start.next
-                if count == pos or (temp.next is None and pos is None):
-                    start.next = start.next.next
-                    return temp.value
+            if pos is None:
+                pos = self.length() - 1
+            while start.next.next is not None and count < pos:
                 count += 1
                 start = start.next
+            temp = start.next
+            start.next = temp.next
+            return temp.value
         print("IndexError: Index out of range")
 
     def remove(self, value):
